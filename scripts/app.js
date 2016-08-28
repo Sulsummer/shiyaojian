@@ -57,7 +57,6 @@ $(document).ready(function(){
         },
         $$initSwiper: function(){
             var that = this;
-            var arr = [];
             return new Swiper('#i-container', {
                 direction: 'vertical',
                 effect : 'fade',
@@ -73,18 +72,7 @@ $(document).ready(function(){
                     
                 },
                 onTransitionStart: function(swiper){
-                    var flag = false;
-                    for(var i = 0; i < arr.length; i ++){
-                        if(arr[i] === (swiper.activeIndex+1)){
-                            flag = true;
-                        }
-                    }
-                    if(!flag){
-                        eval('that.$$page'+(swiper.activeIndex+1)+'()');
-                        arr.push(swiper.activeIndex+1);
-                    }
-                    
-                    
+                    eval('that.$$page'+(swiper.activeIndex+1)+'()');
                 }
             });
         },
@@ -117,10 +105,95 @@ $(document).ready(function(){
             }
         },
         $$page2: function(){
+            var $page2 = $('#page2');
+
+            $page2.empty();
+
+            var $female = $('<div id="female2"></div>'),
+                $ul = $('<ul></ul>');
+
             
+                
+            $page2.append($female).append($ul);
+            $female.width($female.height()*9/16);
+
+            setTimeout(function(){
+
+                var $ulItem1 = $('<li class="item item1"></li>'),
+                    $ulItem2 = $('<li class="item item2"></li>'),
+                    $ulItem3 = $('<li class="item item3"></li>'),
+                    $ulItem4 = $('<li class="item item4"></li>'),
+                    $ulItem5 = $('<li class="item item5"></li>');
+
+                var $cloud = $('<div id="cloud"></div>'),
+                    $birds = $('<div id="birds"></div>');
+                
+                
+                $ul.append($ulItem1).append($ulItem2)
+                .append($ulItem3).append($ulItem4)
+                .append($ulItem5);
+
+                $page2.append($cloud).append($birds);
+
+                $birds.css({
+                    'animation': 'birds 7s linear infinite',
+                    '-webkit-animation': 'birds 7s linear infinite'
+                });
+
+                $cloud.addClass('animated bounceInDown');
+
+                var $dialogBlank = $('<div id="dialog-blank"></div>'),
+                    $p = $('<p></p>');
+                $p.html('我们负责监管</br><strong>食品、药品、化妆品、保健品、医疗器械</strong>');
+                $dialogBlank.append($p);
+                setTimeout(function(){
+                    $page2.append($dialogBlank);
+                    $dialogBlank.addClass('animated fadeInUp');
+                    $p.addClass('animated pulse');
+                }, 300);
+                
+
+                setTimeout(function(){
+                    var count = 0, $ulChildren = $ul.children();
+                    var interval = setInterval(function(){
+                        $($ulChildren[count]).height($($ulChildren[count]).width());
+                        $($ulChildren[count]).addClass('animated bounceInDown');
+                        count ++;
+                        if(count >= 5){
+                            clearInterval(interval);
+                        }
+                    }, 1000);
+                }, 500);
+                
+
+            }, 800);
         },
         $$page3: function(){
-            
+            var $page3 = $('#page3');
+            $page3.empty();
+
+            var $lightLarge1 = $('<div class="i-light i-large-light-1"><div></div><span></span></div>'),
+                $lightLarge2 = $('<div class="i-light i-large-light-2"><div></div><span></span></div>'),
+                $lightLarge3 = $('<div class="i-light i-large-light-3"><div></div><span></span></div>'),
+                $lightLarge4 = $('<div class="i-light i-large-light-4"><div></div></div>');
+
+            var count = 0, $lights = [$lightLarge1, $lightLarge2, $lightLarge3, $lightLarge4];
+            var interval = setInterval(function(){
+                $page3.append($lights[count]);
+                $lights[count].height($lights[count].width());
+                $($lights[count].children()[0]).width($lights[count].width());
+                $($lights[count].children()[0]).height($lights[count].width());
+                $($lights[count].children()[1]).css('top', $lights[count].height());
+                
+                $lights[count].animate({
+                    opacity: 1
+                }, 300);
+
+                count ++;
+                if(count >= 4){
+                    clearInterval(interval);
+                }
+            }, 700);
         },
         $$page4: function(){
             
