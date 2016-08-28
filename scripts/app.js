@@ -57,6 +57,7 @@ $(document).ready(function(){
         },
         $$initSwiper: function(){
             var that = this;
+            var arr = [];
             return new Swiper('#i-container', {
                 direction: 'vertical',
                 effect : 'fade',
@@ -65,52 +66,55 @@ $(document).ready(function(){
                 },
                 onInit: function(swiper){
                     setTimeout(function(){
-                        that.$$page1();
+                        that.$$page1(true);
                     }, 1300);
                 },
                 onTouchMove: function(swiper, event){
                     
                 },
                 onTransitionStart: function(swiper){
-                    eval('that.$$page'+(swiper.activeIndex+1)+'()');
+                    var flag = false;
+                    for(var i = 0; i < arr.length; i ++){
+                        if(arr[i] === (swiper.activeIndex+1)){
+                            flag = true;
+                        }
+                    }
+                    if(!flag){
+                        eval('that.$$page'+(swiper.activeIndex+1)+'()');
+                        arr.push(swiper.activeIndex+1);
+                    }
+                    
                     
                 }
             });
         },
-        $$page1: function(){
-            $('#female').addClass('animated bounceInLeft');
-            
-            var psIn$p1 = $('#p1').addClass('animated bounceInLeft').children();
+        $$page1: function(flag){
+            if(flag){
+                $('#female').addClass('animated bounceInLeft');
+                
+                var psIn$p1 = $('#p1').addClass('animated bounceInLeft').children();
 
-            $('#yellow-bird').animate({
-                right: '130%',
-                top: '1%'
-            }, 6000);
-
-            var count = 0;
-            var interval = setInterval(function(){
-                $(psIn$p1[count]).css('display', 'block').addClass('animated fadeInUp');
-                count ++;
-                if(count >= 3){
-                    clearInterval(interval);
-                    
-                    setTimeout(function(){
-
-                        $('#p2').css('display', 'block').addClass('animated fadeInUp');
-
-                        $('#p2>p').css('display', 'block').addClass('animated fadeInUp');
-                        
+                var count = 0;
+                var interval = setInterval(function(){
+                    $(psIn$p1[count]).css('display', 'block').addClass('animated fadeInUp');
+                    count ++;
+                    if(count >= 3){
+                        clearInterval(interval);
                         setTimeout(function(){
-                            $('#p2>p').removeClass('fadeInUp').addClass('pulse');
-                        }, 1000);
 
-                    }, 800);
-                    
-                    
-                }
-            }, 1000);
-            
+                            $('#p2').css('display', 'block').addClass('animated fadeInUp');
 
+                            $('#p2>p').css('display', 'block').addClass('animated fadeInUp');
+                            
+                            
+                                setTimeout(function(){
+                                    $('#p2>p').removeClass('fadeInUp').addClass('pulse');
+                                }, 1000);
+                        }, 800);
+                    }
+                }, 1000);
+                
+            }
         },
         $$page2: function(){
             
