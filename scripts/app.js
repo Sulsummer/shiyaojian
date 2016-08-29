@@ -150,7 +150,7 @@ $(document).ready(function(){
                     $page2.append($dialogBlank);
                     $dialogBlank.addClass('animated fadeInUp');
                     $p.addClass('animated pulse');
-                }, 300);
+                }, 200);
                 
 
                 setTimeout(function(){
@@ -162,7 +162,7 @@ $(document).ready(function(){
                         if(count >= 5){
                             clearInterval(interval);
                         }
-                    }, 1000);
+                    }, 500);
                 }, 500);
                 
 
@@ -172,10 +172,10 @@ $(document).ready(function(){
             var $page3 = $('#page3');
             $page3.empty();
 
-            var $lightLarge1 = $('<div class="i-light i-large-light-1"><div></div><span></span></div>'),
-                $lightLarge2 = $('<div class="i-light i-large-light-2"><div></div><span></span></div>'),
-                $lightLarge3 = $('<div class="i-light i-large-light-3"><div></div><span></span></div>'),
-                $lightLarge4 = $('<div class="i-light i-large-light-4"><div></div></div>');
+            var $lightLarge1 = $('<div class="i-light i-large-light-1"><div></div><span></span><p></p></div>'),
+                $lightLarge2 = $('<div class="i-light i-large-light-2"><div></div><span></span><p></p></div>'),
+                $lightLarge3 = $('<div class="i-light i-large-light-3"><div></div><span></span><p></p></div>'),
+                $lightLarge4 = $('<div class="i-light i-large-light-4"><div></div><p></p></div>');
 
             var count = 0, $lights = [$lightLarge1, $lightLarge2, $lightLarge3, $lightLarge4];
             var interval = setInterval(function(){
@@ -183,8 +183,25 @@ $(document).ready(function(){
                 $lights[count].height($lights[count].width());
                 $($lights[count].children()[0]).width($lights[count].width());
                 $($lights[count].children()[0]).height($lights[count].width());
-                $($lights[count].children()[1]).css('top', $lights[count].height());
+                if(count !== 3){
+                    $($lights[count].children()[1]).css('top', $lights[count].height());    
+                }
                 
+                switch(count){
+                    case 0:
+                        $($lights[count].children()[2]).html('<strong>研制</strong>');
+                    break;
+                    case 1:
+                        $($lights[count].children()[2]).html('<strong>生产</strong>');
+                    break;
+                    case 2:
+                        $($lights[count].children()[2]).html('<strong>经营</strong>');
+                    break;
+                    case 3:
+                        $($lights[count].children()[1]).html('<strong>使用</strong>');
+                    break;
+                }
+            
                 $lights[count].animate({
                     opacity: 1
                 }, 300);
@@ -194,6 +211,26 @@ $(document).ready(function(){
                     clearInterval(interval);
                 }
             }, 700);
+
+            var $cloud1 = $('<div id="cloud1"></div>'),
+                $cloud2 = $('<div id="cloud2"></div>'),
+                $cloud3 = $('<div id="cloud3"></div>'),
+                $moon = $('<div id="moon"></div>');
+
+            $page3.append($cloud3).append($cloud2).append($cloud1).append($moon);
+            setTimeout(function(){
+                $cloud1.addClass('animated fadeIn');
+                $cloud2.addClass('animated fadeIn');
+                $cloud3.addClass('animated fadeIn');
+            }, 200);
+
+            var $seal = $('<div id="seal">我<br>们<br>管</div>');
+
+            setTimeout(function(){
+                $page3.append($seal);
+            }, 3500);
+           
+
         },
         $$page4: function(){
             

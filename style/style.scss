@@ -9,7 +9,7 @@ html, body {
     max-width: 480px;
     max-height: 800px;
     font-size: 15px;
-    font-family:'JY35770d17cf1618a';
+    font-family:'JY357c1bda8d1618a';
     letter-spacing: 1px;
     position: relative;
 }
@@ -119,7 +119,8 @@ ul {
         background-size: contain;
         z-index: 1;
         left: 55%;
-        animation: female2 1s ease-in forwards;
+        animation: female2 0.6s ease-in forwards;
+        -webkit-animation: female2 0.6s ease-in forwards;
     }
     #dialog-blank {
         position: absolute;
@@ -156,12 +157,12 @@ ul {
         .item1 {
             top: 80%;
             left: 5%;
-            background: url('../src/makeup.png');
+            background: url('../src/food.png');
         }
         .item2 {
             top: 70%;
             left: 23%;
-            background: url('../src/device.png');
+            background: url('../src/medicine.png');
         }
         .item3 {
             top: 65%;
@@ -176,7 +177,7 @@ ul {
         .item5 {
             top: 80%;
             right: 5%;
-            background: url('../src/makeup.png');
+            background: url('../src/device.png');
         }
     }
     #cloud {
@@ -228,6 +229,14 @@ ul {
             animation: spanSpread 0.7s linear;
             -webkit-animation: spanSpread 0.7s linear;
         }
+        p {
+            position: absolute;
+            left:250%;
+            font-size: 5vw;
+            line-height: 10vw;
+            white-space:nowrap;
+            color: rgba(230, 230, 230, 1);
+        }
     }
     .i-large-light-1 {
         top: 10%;
@@ -244,6 +253,47 @@ ul {
     .i-large-light-4 {
         top: 61%;
         left: 10%;
+    }
+    #cloud1, #cloud2, #cloud3, #moon {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-size: 100% 100% !important;
+        bottom: 0;
+        left: 0;
+        opacity: 0;
+    }
+    #cloud1 {
+        background: url('../src/cloud1.png');
+        z-index: 100;
+    }
+    #cloud2 {
+        background: url('../src/cloud2.png');
+        z-index: 6;
+    }
+    #cloud3 {
+        background: url('../src/cloud3.png');
+        z-index: 5;
+    }
+    #moon {
+        background: url('../src/moon.png');
+        opacity: 1;
+        bottom: 20%;
+        z-index: 8;
+        animation: moon 30s linear; 
+        -webkit-animation: moon 30s linear; 
+    }
+    #seal {
+        position: absolute;
+        font-size: 7vw;
+        line-height: 8vw;
+        word-break: break-all;
+        top: 25%;
+        right: 10%;
+        animation: seal 0.5s ease-in;
+        -webkit-animation: seal 0.5s ease-in;
+        // animation-delay: 3.5s;
+        // -webkit-animation-delay: 3.5s;
     }
 }
 .i-music {
