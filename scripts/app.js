@@ -78,10 +78,15 @@ $(document).ready(function(){
                     if(swiper.activeIndex+1 === 6){
                         $('#blackboard').removeClass('boardps');
                     }
+
                 },
                 onSlidePrevStart: function(swiper){
                     if(swiper.activeIndex+1 === 4){
                         $('#blackboard').removeClass('boardps');
+                    }
+                    if(swiper.activeIndex+1 === 5){
+                        $('#female4').removeClass('animated lightSpeedIn');
+                        $('#badge').removeClass('animated bounceInDown');
                     }
                 }
             });
@@ -225,15 +230,13 @@ $(document).ready(function(){
             var $cloud1 = $('<div id="cloud1"></div>'),
                 $cloud2 = $('<div id="cloud2"></div>'),
                 $cloud3 = $('<div id="cloud3"></div>'),
-                $moon = $('<div id="moon"></div>'),
-                $stars = $('<div id="stars"></div>');
+                $moon = $('<div id="moon"></div>');
 
-            $page3.append($cloud3).append($cloud2).append($cloud1).append($moon).append($stars);
+            $page3.append($cloud3).append($cloud2).append($cloud1).append($moon);
             setTimeout(function(){
                 $cloud1.addClass('animated fadeIn');
                 $cloud2.addClass('animated fadeIn');
                 $cloud3.addClass('animated fadeIn');
-                $stars.addClass('animated fadeIn');
             }, 200);
 
             var $seal = $('<div id="seal"></div>');
@@ -247,9 +250,6 @@ $(document).ready(function(){
 
             var $loudspeaker = $('#loudspeaker');
             $loudspeaker.height($loudspeaker.width()*0.8);
-            $loudspeaker.addClass('animated fadeIn bounce');
-
-
         },
         $$page5: function(){
             var $blackboard = $('#blackboard');

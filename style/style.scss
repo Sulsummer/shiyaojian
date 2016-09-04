@@ -9,7 +9,7 @@ html, body {
     max-width: 480px;
     max-height: 800px;
     font-size: 15px;
-    font-family:'jdzhonyuanjian5902215ad1618a';
+    font-family:'jdzhonyuanjian5990aba571618a';
     letter-spacing: 1px;
     position: relative;
 }
@@ -60,7 +60,7 @@ ul {
             position: absolute;
             left: 15%;
             width: 80%;
-            font-size: 2vh;
+            font-size: 2.5vh;
             line-height: 3vh;
             display: none;
             z-index: 100;
@@ -235,7 +235,7 @@ ul {
             font-size: 5vw;
             line-height: 10vw;
             white-space:nowrap;
-            color: rgba(230, 230, 230, 1);
+            color: #5c8899;
         }
     }
     .i-large-light-1 {
@@ -254,7 +254,7 @@ ul {
         top: 61%;
         left: 10%;
     }
-    #cloud1, #cloud2, #cloud3, #moon, #stars {
+    #cloud1, #cloud2, #cloud3, #moon {
         width: 100%;
         height: 100%;
         position: absolute;
@@ -281,28 +281,20 @@ ul {
         bottom: 20%;
         z-index: 8;
         animation: moon 30s linear; 
-        -webkit-animation: moon 30s linear; 
-    }
-    #stars {
-        background: url('../src/stars.png');
-        z-index: 4;
-        bottom: 0;
-        animation: stars 30s linear infinite;
-        -webkit-animation: stars 30s linear infinite;
+        -webkit-animation: moon 30s linear forwards; 
     }
     #seal {
         background: url('../src/seal.png')  no-repeat;
-        width: 50%;
-        height: 60%;
+        background-size: 100% 100%;
+        width: 40%;
+        height: 30%;
         position: absolute;
         top: 25%;
-        right: 5%;
+        right: 10%;
         z-index: 10;
         opacity: 1;
         animation: seal 0.5s ease-in;
         -webkit-animation: seal 0.5s ease-in;
-        // animation-delay: 3.5s;
-        // -webkit-animation-delay: 3.5s;
     }
 }
 
@@ -316,8 +308,8 @@ ul {
         position: absolute;
         top: 3%;
         left: 1%;
-        animation: loudspeaker 3s .2s infinite;
-        -webkit-animation: loudspeaker 3s .2s infinite;
+        animation: loudspeaker 1.5s .4s ease infinite both;
+        -webkit-animation: loudspeaker 1.5s .4s ease infinite both;
     }
     #p {
         background: url('../src/p4.png');
@@ -349,8 +341,8 @@ ul {
             width: 100%;
             height: 25%;
             top: 10%;
-            // animation: phones 1s .4s ease infinite;
-            // -webkit-animation: phones 1s .4s ease both infinite;
+            animation: phones 1.5s .4s ease infinite;
+            -webkit-animation: phones 1.5s .4s ease both infinite;
         }
     }
     #dialog-blank2 {
@@ -490,7 +482,7 @@ ul {
         width: 45%;
         height: 50%;
         position: absolute;
-        right: 10%;
+        right: 5%;
         bottom: 5%;
         z-index: 1;
     }
@@ -501,7 +493,7 @@ ul {
         height: 20%;
         position: absolute;
         top: 3%;
-        left: 15%;
+        left: 18%;
     }
     #flag {
         background: url('../src/flag.png');
@@ -512,12 +504,11 @@ ul {
         width: 35%;
         left: 3%;
         padding: 7% 10%;
-        padding-left: 23%;
+        padding-left: 25%;
         box-size: border-box;
         p {
             display: inline-block;
             vertical-align: top;
-            writing-mode: vertical-rl;
             font-size: 9vw;
             line-height: 9.5vw;
             color: rgb(230, 230, 230);
@@ -526,14 +517,14 @@ ul {
 }
 .i-music {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 10px;
+    right: 10px;
     z-index: 1000000;
     a {
-        width: 20px;
-        height: 20px;
+        width: 10px;
+        height: 10px;
         display: block;
-        padding: 5px;
+        padding: 5px 6px;
         box-size: border-box;
         margin: 0;
         background: #26a69a;
@@ -541,6 +532,7 @@ ul {
         img{
             width: 100%; 
             height: 100%;
+            display: block;
         }
     }
     audio {
