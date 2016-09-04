@@ -73,6 +73,16 @@ $(document).ready(function(){
                 },
                 onTransitionStart: function(swiper){
                     eval('that.$$page'+(swiper.activeIndex+1)+'()');
+                },
+                onSlideNextEnd: function(swiper){
+                    if(swiper.activeIndex+1 === 6){
+                        $('#blackboard').removeClass('boardps');
+                    }
+                },
+                onSlidePrevStart: function(swiper){
+                    if(swiper.activeIndex+1 === 4){
+                        $('#blackboard').removeClass('boardps');
+                    }
                 }
             });
         },
@@ -215,28 +225,39 @@ $(document).ready(function(){
             var $cloud1 = $('<div id="cloud1"></div>'),
                 $cloud2 = $('<div id="cloud2"></div>'),
                 $cloud3 = $('<div id="cloud3"></div>'),
-                $moon = $('<div id="moon"></div>');
+                $moon = $('<div id="moon"></div>'),
+                $stars = $('<div id="stars"></div>');
 
-            $page3.append($cloud3).append($cloud2).append($cloud1).append($moon);
+            $page3.append($cloud3).append($cloud2).append($cloud1).append($moon).append($stars);
             setTimeout(function(){
                 $cloud1.addClass('animated fadeIn');
                 $cloud2.addClass('animated fadeIn');
                 $cloud3.addClass('animated fadeIn');
+                $stars.addClass('animated fadeIn');
             }, 200);
 
-            var $seal = $('<div id="seal">我<br>们<br>管</div>');
+            var $seal = $('<div id="seal"></div>');
 
             setTimeout(function(){
                 $page3.append($seal);
             }, 3500);
-           
-
         },
         $$page4: function(){
-            
+            var $page4 = $('#page4');
+
+            var $loudspeaker = $('#loudspeaker');
+            $loudspeaker.height($loudspeaker.width()*0.8);
+            $loudspeaker.addClass('animated fadeIn bounce');
+
+
         },
         $$page5: function(){
-            
+            var $blackboard = $('#blackboard');
+            $blackboard.addClass('boardps');
+        },
+        $$page6: function(){
+            $('#female4').addClass('animated lightSpeedIn');
+            $('#badge').addClass('animated bounceInDown');
         }
 
     }
