@@ -81,20 +81,13 @@
 }
 
 
-@keyframes light {
-    from {
-        background: rgba(255, 255, 255, 1);
+
+@keyframes open {
+    0% {
+        opacity: 0;
     }
-    to {
-        background: rgba(240, 240, 240, 1);
-    }
-}
-@keyframes spanSpread {
-    from {
-        height: 0;
-    }
-    to {
-        height: 200%;
+    100% {
+        opacity: 1;
     }
 }
 @keyframes moon {

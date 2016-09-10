@@ -15,12 +15,14 @@ $(document).ready(function(){
                 if($switch.hasClass('on')){
                     $('#musicfx').get(0).pause();
                     $switch.removeClass('on').addClass('pause');
-                    $('.i-music > a > img').attr('src', 'src/close.png');
+                    $('.i-music > a > img').attr('src', 'src/off.png')
+                        .removeClass('jump');
                 }
                 else if($switch.hasClass('pause')){
                     $('#musicfx').get(0).play();
                     $switch.removeClass('pause').addClass('on');
-                    $('.i-music > a > img').attr('src', 'src/indicate.png');
+                    $('.i-music > a > img').attr('src', 'src/on.png')
+                        .addClass('jump');
                 } 
                 else return false;
                 event.stopPropagation();
@@ -84,10 +86,7 @@ $(document).ready(function(){
                     if(swiper.activeIndex+1 === 4){
                         $('#blackboard').removeClass('boardps');
                     }
-                    if(swiper.activeIndex+1 === 5){
-                        $('#female4').removeClass('animated lightSpeedIn');
-                        $('#badge').removeClass('animated bounceInDown');
-                    }
+
                 }
             });
         },
@@ -184,80 +183,106 @@ $(document).ready(function(){
             }, 800);
         },
         $$page3: function(){
-            var $page3 = $('#page3');
-            $page3.empty();
-
-            var $lightLarge1 = $('<div class="i-light i-large-light-1"><div></div><span></span><p></p></div>'),
-                $lightLarge2 = $('<div class="i-light i-large-light-2"><div></div><span></span><p></p></div>'),
-                $lightLarge3 = $('<div class="i-light i-large-light-3"><div></div><span></span><p></p></div>'),
-                $lightLarge4 = $('<div class="i-light i-large-light-4"><div></div><p></p></div>');
-
-            var count = 0, $lights = [$lightLarge1, $lightLarge2, $lightLarge3, $lightLarge4];
-            var interval = setInterval(function(){
-                $page3.append($lights[count]);
-                $lights[count].height($lights[count].width());
-                $($lights[count].children()[0]).width($lights[count].width());
-                $($lights[count].children()[0]).height($lights[count].width());
-                if(count !== 3){
-                    $($lights[count].children()[1]).css('top', $lights[count].height());    
+            var r = window.innerHeight/window.innerWidth;
+            
+            var $bubbleDiv = $('#bubbleDiv');
+            $bubbleDiv.empty();
+            if( $('#seal')){
+                 $('#seal').remove();
+            }
+            clearInterval(window.interval0);
+            var marginTop = $bubbleDiv.height()/10;
+            var count = 0;
+            window.interval0 = setInterval(function(){
+                $bubbleDiv.append('<div class="d d'+count+'"></div>');
+                if(count === 0){
+                    $bubbleDiv.append('<div class="text text'+count+'">研制</div>');
+                }
+                if(count === 1){
+                    $bubbleDiv.append('<div class="text text'+count+'">生产</div>');
+                }
+                if(count === 2){
+                    $bubbleDiv.append('<div class="text text'+count+'">经营</div>');
+                }
+                if(count === 3){
+                    $bubbleDiv.append('<div class="text text'+count+'">使用</div>');
                 }
                 
-                switch(count){
-                    case 0:
-                        $($lights[count].children()[2]).html('<strong>研制</strong>');
-                    break;
-                    case 1:
-                        $($lights[count].children()[2]).html('<strong>生产</strong>');
-                    break;
-                    case 2:
-                        $($lights[count].children()[2]).html('<strong>经营</strong>');
-                    break;
-                    case 3:
-                        $($lights[count].children()[1]).html('<strong>使用</strong>');
-                    break;
+                $('.d'+count).css('height', $('.d'+count).width()/r);
+                new ProgressBar.Circle('#bubbleDiv', {
+                    color: '#ecf0f1',
+                    strokeWidth: 5,
+                    duration: 500,
+                    easing: 'easeInOut',
+                    svgStyle: {
+                        display: 'block',
+                        width: '15%',
+                        marginLeft: '15%',
+                        marginTop: (function(){
+                            return count === 0 ? '5%' : 0;
+                        })()
+                    }
+                }).animate(1);
+                if(count < 3){
+                    setTimeout(function(){
+                        new ProgressBar.Line('#bubbleDiv', {
+                            color: '#ecf0f1',
+                            strokeWidth: 1,
+                            duration: 5000,
+                            easing: 'easeInOut',
+                            svgStyle: {
+                                display: 'block',
+                                width: '100%',
+                                height:'10%',
+                                marginLeft: '22.2%',
+                                marginTop:0
+                            },
+                            step: function(state, line, attachment) {
+                                line.path.setAttribute('d', 'M 0,0 L0,'+marginTop);
+                            }
+                        }).animate(1);
+                    }, 150); 
                 }
-            
-                $lights[count].animate({
-                    opacity: 1
-                }, 300);
-
                 count ++;
                 if(count >= 4){
-                    clearInterval(interval);
+                    clearInterval(window.interval0);
+                    $('#page3').append('<div id="seal"></div>');
                 }
-            }, 700);
-
-            var $cloud1 = $('<div id="cloud1"></div>'),
-                $cloud2 = $('<div id="cloud2"></div>'),
-                $cloud3 = $('<div id="cloud3"></div>'),
-                $moon = $('<div id="moon"></div>');
-
-            $page3.append($cloud3).append($cloud2).append($cloud1).append($moon);
-            setTimeout(function(){
-                $cloud1.addClass('animated fadeIn');
-                $cloud2.addClass('animated fadeIn');
-                $cloud3.addClass('animated fadeIn');
-            }, 200);
-
-            var $seal = $('<div id="seal"></div>');
-
-            setTimeout(function(){
-                $page3.append($seal);
-            }, 3500);
+            }, 800);
         },
         $$page4: function(){
             var $page4 = $('#page4');
 
-            var $loudspeaker = $('#loudspeaker');
+            var $loudspeaker = $('#loudspeaker'),
+                $p = $('#board>p');
             $loudspeaker.height($loudspeaker.width()*0.8);
+            var count = 0;
+            var interval = setInterval(function(){
+                    $($p[count]).addClass('animated fadeInUp');
+                    count ++;
+                    if(count >= 4){
+                        clearInterval(interval);
+                    }
+                }, 200);
         },
         $$page5: function(){
             var $blackboard = $('#blackboard');
             $blackboard.addClass('boardps');
         },
         $$page6: function(){
-            $('#female4').addClass('animated lightSpeedIn');
-            $('#badge').addClass('animated bounceInDown');
+            clearInterval(window.interval1);
+            var $is = $('#flag>p>i'),
+                count = 0;
+            $is.each(function(){
+                $(this).removeClass('animated fadeInUp');
+            })
+            window.interval1 = setInterval(function(){
+                $($is[count]).addClass('animated fadeInUp');
+                count ++;
+                if(count >= 12){
+                    clearInterval(window.interval1);
+                }
+            }, 150);
         }
 
     }
