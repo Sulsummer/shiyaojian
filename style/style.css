@@ -268,9 +268,9 @@ ul {
 #page1 #p2 p {
   position: absolute;
   top: 17%;
-  left: 15%;
-  width: 70%;
-  height: 20%;
+  left: 18%;
+  width: 60%;
+  height: 27%;
   background: url("../src/12331.png");
   background-size: 100% 100%;
   display: none;
@@ -561,10 +561,10 @@ ul {
 #page4 #dialog-blank2 p {
   background: url("../src/12331.png");
   background-size: 100% 100%;
-  width: 75%;
-  height: 28%;
+  width: 70%;
+  height: 39%;
   margin-left: 18%;
-  margin-top: 20%;
+  margin-top: 15%;
 }
 #page4 #house {
   background: url("../src/house.png");
