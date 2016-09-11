@@ -91,6 +91,9 @@ $(document).ready(function(){
             });
         },
         $$page1: function(flag){
+            if($('#down')){
+                $('#down').removeClass('animated fadeIn');
+            }
             if(flag){
                 $('#female').addClass('animated bounceInLeft');
                 
@@ -115,6 +118,9 @@ $(document).ready(function(){
                         }, 800);
                     }
                 }, 1000);
+                setTimeout(function(){
+                    $('#down').addClass('animated fadeIn');
+                }, 3000);
                 
             }
         },

@@ -1,3 +1,11 @@
+@keyframes downtip {
+  from {
+    bottom: 10%;
+  }
+  to {
+    bottom: 5%;
+  }
+}
 @keyframes cloud1 {
   from {
     top: 10%;
@@ -280,9 +288,32 @@ ul {
   animation: yellow-bird-rotate 1.5s linear infinite;
   -webkit-animation: yellow-bird-rotate 1.5s linear infinite;
 }
+#page1 #down {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 20%;
+  background: url("../src/downbg.png");
+  background-size: 100% 100%;
+  opacity: 0;
+  z-index: 100000;
+}
+#page1 #down div {
+  position: absolute;
+  bottom: 10%;
+  right: 3%;
+  z-index: 100001;
+  width: 25%;
+  height: 50%;
+  background: url("../src/down.png");
+  background-size: 100% 100%;
+  animation: downtip 1.5s ease-out infinite;
+  -webkit-animation: downtip 1.5s ease-out infinite;
+}
 
 #page2 {
-  background: url("../src/bg2.jpg");
+  background: url("../src/bg2.png");
   background-size: 100% 100%;
 }
 #page2 #female2 {

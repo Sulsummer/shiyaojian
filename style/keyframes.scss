@@ -1,3 +1,11 @@
+@keyframes downtip {
+    from {
+        bottom: 10%;
+    }
+    to {
+        bottom: 5%;
+    }
+}
 @keyframes cloud1 {
     from {
         top: 10%;
