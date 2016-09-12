@@ -91,8 +91,8 @@ $(document).ready(function(){
             });
         },
         $$page1: function(flag){
-            if($('#down')){
-                $('#down').removeClass('animated fadeIn');
+            if($('.down')){
+                $('.down').removeClass('animated fadeIn');
             }
             if(flag){
                 $('#female').addClass('animated bounceInLeft');
@@ -119,15 +119,17 @@ $(document).ready(function(){
                     }
                 }, 1000);
                 setTimeout(function(){
-                    $('#down').addClass('animated fadeIn');
-                }, 3000);
+                    $('.down').addClass('animated fadeIn');
+                }, 4000);
                 
             }
         },
         $$page2: function(){
+
             var $page2 = $('#page2');
 
             $page2.empty();
+            $page2.append('<div class="down"><div></div></div>');
 
             var $female = $('<div id="female2"></div>'),
                 $ul = $('<ul></ul>');
@@ -187,76 +189,90 @@ $(document).ready(function(){
                 
 
             }, 800);
+            setTimeout(function(){
+                $('.down').addClass('animated fadeIn');
+            }, 4000);
         },
         $$page3: function(){
-            var r = window.innerHeight/window.innerWidth;
-            
-            var $bubbleDiv = $('#bubbleDiv');
-            $bubbleDiv.empty();
-            if( $('#seal')){
-                 $('#seal').remove();
+            if($('.down')){
+                $('.down').removeClass('animated fadeIn');
             }
+            var $bubbleDiv = $('#bubbleDiv'),
+                $texts = $('#texts');
             clearInterval(window.interval0);
-            var marginTop = $bubbleDiv.height()/10;
-            var count = 0;
-            window.interval0 = setInterval(function(){
-                $bubbleDiv.append('<div class="d d'+count+'"></div>');
-                if(count === 0){
-                    $bubbleDiv.append('<div class="text text'+count+'">研制</div>');
+            $bubbleDiv.empty();
+            $('#seal').remove();
+            $texts.empty();
+            var marginTop = $bubbleDiv.height()/15,
+                count = 0;
+            $bubbleDiv.append($('<div></div><div></div><div></div><div></div><div></div>'));  
+            $texts.append($('<p>研制</p><p>生产</p><p>经营</p><p>使用</p>'))
+            function check(type){
+                var left, margintop;
+                if(window.innerWidth < 330){
+                    left = '25%';
+                    margintop = '65%';
                 }
-                if(count === 1){
-                    $bubbleDiv.append('<div class="text text'+count+'">生产</div>');
+                else if(window.innerWidth >= 330 && window.innerWidth < 400){
+                    left = '24.8%';
+                    margintop = '80%';
+
                 }
-                if(count === 2){
-                    $bubbleDiv.append('<div class="text text'+count+'">经营</div>');
-                }
-                if(count === 3){
-                    $bubbleDiv.append('<div class="text text'+count+'">使用</div>');
+                else {
+                    left = '24.5%';
+                    margintop = '80%';
                 }
                 
-                $('.d'+count).css('height', $('.d'+count).width()/r);
-                new ProgressBar.Circle('#bubbleDiv', {
-                    color: '#ecf0f1',
-                    strokeWidth: 5,
-                    duration: 500,
+                if(type === 'left'){
+                    return left;
+                }
+                if(type === 'top'){
+                    return margintop;
+                }
+            }
+            var marginLeft = check('left');
+            var margintop = check('top');
+            $($texts.children()[0]).css('margin-top', margintop);
+            window.interval0 = setInterval(function(){
+                new ProgressBar.Line('#bubbleDiv', {
+                    color: 'rgba(240, 240, 240, 0.6)',
+                    strokeWidth: 1,
+                    duration: 5000,
                     easing: 'easeInOut',
                     svgStyle: {
                         display: 'block',
-                        width: '15%',
-                        marginLeft: '15%',
-                        marginTop: (function(){
-                            return count === 0 ? '5%' : 0;
+                        position: 'absolute',
+                        width: '100%',
+                        height:(function(){
+                            return count === 0 ? '9%' : '11%';
+                        })(),
+                        marginLeft: marginLeft,
+                        top:(function(){
+                            return count === 0 ? '11%' : (count*12+10)+'%';
                         })()
+                    },
+                    step: function(state, line, attachment) {
+                        line.path.setAttribute('d', 'M 0,0 L0,'+marginTop);
                     }
                 }).animate(1);
-                if(count < 3){
-                    setTimeout(function(){
-                        new ProgressBar.Line('#bubbleDiv', {
-                            color: '#ecf0f1',
-                            strokeWidth: 1,
-                            duration: 5000,
-                            easing: 'easeInOut',
-                            svgStyle: {
-                                display: 'block',
-                                width: '100%',
-                                height:'10%',
-                                marginLeft: '22.2%',
-                                marginTop:0
-                            },
-                            step: function(state, line, attachment) {
-                                line.path.setAttribute('d', 'M 0,0 L0,'+marginTop);
-                            }
-                        }).animate(1);
-                    }, 150); 
-                }
                 count ++;
                 if(count >= 4){
                     clearInterval(window.interval0);
-                    $('#page3').append('<div id="seal"></div>');
                 }
             }, 800);
+            setTimeout(function(){
+                $('#page3').append('<div id="seal"></div>');
+            }, 4500);
+
+            setTimeout(function(){
+                $('.down').addClass('animated fadeIn');
+            }, 5000);
+
         },
         $$page4: function(){
+            if($('.down')){
+                $('.down').removeClass('animated fadeIn');
+            }
             var $page4 = $('#page4');
 
             var $loudspeaker = $('#loudspeaker'),
@@ -270,10 +286,19 @@ $(document).ready(function(){
                         clearInterval(interval);
                     }
                 }, 200);
+            setTimeout(function(){
+                $('.down').addClass('animated fadeIn');
+            }, 3000);
         },
         $$page5: function(){
+            if($('.down')){
+                $('.down').removeClass('animated fadeIn');
+            }
             var $blackboard = $('#blackboard');
             $blackboard.addClass('boardps');
+            setTimeout(function(){
+                $('.down').addClass('animated fadeIn');
+            }, 3000);
         },
         $$page6: function(){
             clearInterval(window.interval1);

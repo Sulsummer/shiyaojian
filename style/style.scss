@@ -33,6 +33,29 @@ ul {
         height: 100%;
     }
 }
+.down {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    background: url('../src/downbg.png');
+    background-size: 100% 100%;
+    opacity: 0;
+    z-index: 100000;
+    div {
+        position: absolute;
+        bottom: 10%;
+        right: 3%;
+        z-index: 100001;
+        width: 25%;
+        height: 50%;
+        background: url('../src/down.png');
+        background-size: 100% 100%;
+        animation: downtip 1.5s ease-out infinite;
+        -webkit-animation: downtip 1.5s ease-out infinite;
+    }
+}
 #page1 {
     background: url('../src/bg1.png');
     background-size: 100% 100%;
@@ -109,29 +132,7 @@ ul {
             -webkit-animation: yellow-bird-rotate 1.5s linear infinite;
         }
     }
-    #down {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 20%;
-        background: url('../src/downbg.png');
-        background-size: 100% 100%;
-        opacity: 0;
-        z-index: 100000;
-        div {
-            position: absolute;
-            bottom: 10%;
-            right: 3%;
-            z-index: 100001;
-            width: 25%;
-            height: 50%;
-            background: url('../src/down.png');
-            background-size: 100% 100%;
-            animation: downtip 1.5s ease-out infinite;
-            -webkit-animation: downtip 1.5s ease-out infinite;
-        }
-    }   
+       
 }
 #page2 {
     background: url('../src/bg2.png');
@@ -229,55 +230,114 @@ ul {
     background-size: 100% 100%;
     #bubbleDiv {
         height: 80%;
-        position: relative;
+        width: 100%;
+        div {
+            width:0;
+            height: 0;
+            margin-left: 20.5%;
+            position: relative;
+            opacity: 0;
+            animation: open 300ms linear forwards;
+            -webkit-animation: open 300ms linear forwards;
+            &:before{
+                content: '';
+                border-radius: 50%;
+                background: #fff;
+                box-shadow: 0px 0px 0.5px 2px rgba(230, 230, 230, 0.8);
+                position: absolute;
+                z-index: 11;
+                animation: bubble 1s ease-out infinite alternate;
+                -webkit-animation: bubble 1s ease-out infinite alternate;
+            }
+            &:after {
+                content: '';
+                border-radius: 50%;
+                box-shadow: 0px 0px 1px 5px rgba(240, 240, 240, 0.6);
+                position: absolute;
+                z-index: 10;
+            }
+        }
+        div:first-child {
+            animation-delay:0.1s;
+            -webkit-animation-delay:0.1s;
+            top: 8%;
+            &:before {
+                width: 35px;
+                height: 35px;    
+            }
+            &:after {
+                width: 35px;
+                height: 35px;
+            }
+        }
+        div:nth-child(2),
+        div:nth-child(3),
+        div:nth-child(4),
+        div:nth-child(5) {
+            margin-left: 22.8%;
+            &:before {
+                width: 17px;
+                height: 17px;    
+            }
+            &:after {
+                width: 17px;
+                height: 17px;
+            }
+        }
+        div:nth-child(2){
+            animation-delay:1s;
+            -webkit-animation-delay:1s;
+            top: 25%;
+        }
+        div:nth-child(3){
+            animation-delay:1.6s;
+            -webkit-animation-delay:1.6s;
+            top: 40%;
+        }
+        div:nth-child(4){
+            animation-delay:2.3s;
+            -webkit-animation-delay:2.3s;
+            top: 55%;
+        }
+        div:nth-child(5){
+            animation-delay:3s;
+            -webkit-animation-delay:3s;
+            top: 70%;
+        }
+
     }
-    .d{
-        background-size: 100% 100% !important;
-        width: 10%;
-        height: 6%;
-        opacity: 0;
+    #texts {
         position: absolute;
-        left: 17.5%;
-        position: absolute;
-        animation: open 1s 200ms linear forwards;
-        -webkit-animation: open 1s 200ms linear forwards;
+        height: 80%;
+        width: 40%;
+        right: 10%;
+        top: 0;
+        p {
+            opacity: 0;
+            margin-top: 25%;
+            line-height: 5vh;
+            font-size: 4vh;
+            z-index: 10000;
+        }
+        p:nth-child(1) {
+            margin-top: 70%;
+            animation: open 300ms 2s linear forwards;
+            -webkit-animation: open 300ms 2s linear forwards;
+        }
+        p:nth-child(2) {
+            animation: open 300ms 2.8s linear forwards;
+            -webkit-animation: open 300ms 2.8s linear forwards;
+        }
+        p:nth-child(3) {
+            animation: open 300ms 3.6s linear forwards;
+            -webkit-animation: open 300ms 3.6s linear forwards;
+        }
+        p:nth-child(4) {
+            animation: open 300ms 4.4s linear forwards;
+            -webkit-animation: open 300ms 4.4s linear forwards;
+        }
     }
-    .d0 {
-        background: url('../src/yanzhi.png');
-        top: 3%;      
-    }
-    .d1 {
-        background: url('../src/shengchan.png');    
-        top: 25%;
-    }
-    .d2 {
-        background: url('../src/jingying.png');
-        top: 47%;
-    }
-    .d3 {
-        background: url('../src/shiyong.png');
-        top: 69%;
-    }
-    .text {
-        font-size: 5vw;
-        position: absolute;
-        left: 40%;
-        opacity: 0;
-        animation: open 1s 200ms linear forwards;
-        -webkit-animation: open 1s 200ms linear forwards;
-    }
-    .text0{
-        top:3%;
-    }
-    .text1{
-        top:25%;
-    }
-    .text2{
-        top:47%;
-    }
-    .text3{
-        top:69.5%;
-    }
+
 
     #cloud1, #cloud2, #cloud3, #moon {
         width: 100%;

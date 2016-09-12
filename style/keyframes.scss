@@ -89,7 +89,14 @@
 }
 
 
-
+@keyframes bubble {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0.8;
+    }
+}
 @keyframes open {
     0% {
         opacity: 0;
