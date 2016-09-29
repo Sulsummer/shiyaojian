@@ -191,7 +191,7 @@ html, body {
   max-width: 480px;
   max-height: 800px;
   font-size: 15px;
-  font-family: 'jdzhonyuanjian5990aba571618a';
+  font-family: 'jdzhonyuanjian61a4a26e31618a';
   letter-spacing: 1px;
   position: relative;
 }
@@ -270,9 +270,9 @@ ul {
 }
 #page1 #p1 p {
   position: absolute;
-  left: 15%;
-  width: 80%;
-  font-size: 2.5vh;
+  left: 10%;
+  width: 88%;
+  font-size: 2.2vh;
   line-height: 3vh;
   display: none;
   z-index: 100;
@@ -281,10 +281,10 @@ ul {
   top: 10%;
 }
 #page1 #p1 p:nth-child(2) {
-  top: 23%;
+  top: 24%;
 }
 #page1 #p1 p:nth-child(3) {
-  top: 36%;
+  top: 39%;
 }
 #page1 #p2 {
   background: url("../src/dialog-bottom.png");
@@ -771,7 +771,7 @@ ul {
   height: 20%;
   position: absolute;
   top: 3%;
-  left: 18%;
+  left: 20%;
 }
 #page6 #flag {
   background: url("../src/flag.png");
