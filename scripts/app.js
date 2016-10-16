@@ -166,7 +166,7 @@ $(document).ready(function(){
 
                 var $dialogBlank = $('<div id="dialog-blank"></div>'),
                     $p = $('<p></p>');
-                $p.html('我们负责监管</br><strong>食品、药品、化妆品、保健品、医疗器械</strong>');
+                $p.html('我们统一受理</br><strong>食品、药品、化妆品、保健品、医疗器械</strong>的投诉举报，并根据食品安全委员会成员部门的职责对投诉举报进行转办、跟踪与监督协调');
                 $dialogBlank.append($p);
                 setTimeout(function(){
                     $page2.append($dialogBlank);

@@ -9,7 +9,7 @@ html, body {
     max-width: 480px;
     max-height: 800px;
     font-size: 15px;
-    font-family:'jdzhonyuanjian61a4a26e31618a';
+    font-family:'jdzhonyuanjian67090c13a1618a';
     letter-spacing: 1px;
     position: relative;
 }
@@ -149,20 +149,20 @@ ul {
     }
     #dialog-blank {
         position: absolute;
-        width: 45%;
-        height: 28%;
+        width: 53%;
+        height: 33%;
         left: 5%;
-        bottom: 20%;
+        bottom: 17%;
         background: url('../src/dialog-blank.png');
         background-size: 100% 100%;
         p {
             width: 90%;
             height: 65%;
             margin-top: 10%;
-            margin-left: 10%;
-            margin-right: 5%;
-            font-size: 5vw;
-            line-height: 7vw;
+            margin-left: 7%;
+            margin-right: 10%;
+            font-size: 4vw;
+            line-height: 5.5vw;
         }
     }
     ul {
